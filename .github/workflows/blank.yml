@@ -29,4 +29,4 @@ jobs:
           docker run --rm -v `pwd`/project:/project -w /project composer require --dev phpstan/phpstan:1.10.15 --ignore-platform-reqs
       - name: Run phpstan
         run: |
-          docker run --rm -v `pwd`/project:/project -w /project ${{ matrix.image }} vendor/bin/phpstan analyse src
+          docker run --rm -v `pwd`/project:/project -w /project ${{ matrix.image }} vendor/bin/phpstan analyse src --debug -vvv
