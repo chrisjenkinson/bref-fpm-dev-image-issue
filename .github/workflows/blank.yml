@@ -22,11 +22,11 @@ jobs:
     steps:
       - name: Install symfony skeleton
         run: |
-          docker run --rm -v .:/project -w /project composer create-project symfony/skeleton:"6.1.*" project
-          docker run --rm -v ./project:/project -w /project composer require "php:8.0.*" --ignore-platform-reqs
+          docker run --rm -v $(PWD):/project -w /project composer create-project symfony/skeleton:"6.1.*" project
+          docker run --rm -v $(PWD)/project:/project -w /project composer require "php:8.0.*" --ignore-platform-reqs
       - name: Install phpstan
         run: |
-          docker run --rm -v ./project:/project -w /project composer require --dev phpstan/phpstan:1.10.15 --ignore-platform-reqs
+          docker run --rm -v $(PWD)/project:/project -w /project composer require --dev phpstan/phpstan:1.10.15 --ignore-platform-reqs
       - name: Run phpstan
         run: |
-          docker run --rm -v ./project:/project -w /project ${{ matrix.image }} vendor/bin/phpstan analyse src
+          docker run --rm -v $(PWD)/project:/project -w /project ${{ matrix.image }} vendor/bin/phpstan analyse src
