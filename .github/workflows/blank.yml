@@ -17,7 +17,27 @@ jobs:
   run:
     strategy:
       matrix:
-        image: ["php:8.1.19", "bref/php-80-fpm-dev:2", "bref/php-81-fpm-dev:2", "bref/php-82-fpm-dev:2"]
+      
+      "bref/${CPU_PREFIX}php-$*" "bref/${CPU_PREFIX}php-$*-fpm" "bref/${CPU_PREFIX}php-$*-console" \
+	  "bref/${CPU_PREFIX}build-php-$*" "bref/${CPU_PREFIX}php-$*-fpm-dev"; \
+      
+        image: 
+          - "php:8.1.19"
+          - "bref/php-80:2"
+          - "bref/php-80-fpm:2"
+          - "bref/php-80-console:2"
+          - "bref/build-php-80:2"
+          - "bref/php-80-fpm-dev:2"
+          - "bref/php-81:2"
+          - "bref/php-81-fpm:2"
+          - "bref/php-81-console:2"
+          - "bref/build-php-81:2"
+          - "bref/php-81-fpm-dev:2"
+          - "bref/php-82:2"
+          - "bref/php-82-fpm:2"
+          - "bref/php-82-console:2"
+          - "bref/build-php-82:2"
+          - "bref/php-82-fpm-dev:2"
     runs-on: ubuntu-latest
     steps:
       - name: Install symfony skeleton
