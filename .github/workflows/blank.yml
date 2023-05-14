@@ -17,10 +17,6 @@ jobs:
   run:
     strategy:
       matrix:
-      
-      "bref/${CPU_PREFIX}php-$*" "bref/${CPU_PREFIX}php-$*-fpm" "bref/${CPU_PREFIX}php-$*-console" \
-	  "bref/${CPU_PREFIX}build-php-$*" "bref/${CPU_PREFIX}php-$*-fpm-dev"; \
-      
         image: 
           - "php:8.1.19"
           - "bref/php-80:2"
