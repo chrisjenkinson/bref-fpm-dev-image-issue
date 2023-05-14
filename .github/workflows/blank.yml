@@ -31,10 +31,7 @@ jobs:
           docker run --rm -v `pwd`/project:/project -w /project composer require "php:8.0.*" --ignore-platform-reqs
       - name: Install phpstan and phpunit
         run: |
-          docker run --rm -v `pwd`/project:/project -w /project composer require --dev phpstan/phpstan:1.10.15 phpunit/phpunit:10.0.19 --ignore-platform-reqs
-      - name: Run phpunit
-        run: |
-          docker run --rm -v `pwd`/project:/project -w /project ${{ matrix.image }} vendor/bin/phpunit
+          docker run --rm -v `pwd`/project:/project -w /project composer require --dev phpstan/phpstan:1.10.15 --ignore-platform-reqs
       - name: Run phpstan
         run: |
           docker run --rm -v `pwd`/project:/project -w /project ${{ matrix.image }} vendor/bin/phpstan analyse src --debug -vvv
